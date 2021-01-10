@@ -2,21 +2,49 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    redirect: '/index',
+    children: [{
+      path: '/index',
+      name: 'index',
+      component: () => import('../views/Index.vue')
+    }, {
+      path: '/product/:id',
+      name: 'product',
+      component: () => import('../views/Product.vue')
+    }, {
+      path: '/dtail/:id',
+      name: 'dtail',
+      component: () => import('../views/Dtail.vue')
+    }]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/Cart.vue')
+  }, {
+    path: '/order',
+    name: 'Order',
+    component: () => import('../views/Order.vue'),
+    children: [{
+      path: 'list',
+      name: 'List',
+      component: () => import('../views/List.vue')
+    }, {
+      path: 'pay',
+      name: 'Pay',
+      component: () => import('../views/Pay.vue')
+    }, {
+      path: 'confirm',
+      name: 'Confirm',
+      component: () => import('../views/Confirm.vue')
+    }]
   }
 ]
 
