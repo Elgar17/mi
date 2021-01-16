@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <NavHeader  msg="header"/>
+    <NavHeader  />
     <router-view></router-view>
     <NavFooter />
   </div>

@@ -6,8 +6,12 @@ import store from './store'
 
 import axios from './http.js'
 import VueAxios from 'vue-axios'
-// import env from './env'
 
+// mockjs 开关
+const mock = true
+if (mock) {
+  require('./mock/api')
+}
 
 Vue.use(VueAxios, axios)
 

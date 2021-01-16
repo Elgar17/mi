@@ -7,14 +7,16 @@
 <script>
 export default {
   name: 'app',
-  date: {
-    d: '123'
+  data() {
+   return {
+     d: '123'
+   }
   },
   mounted() {
-    
   }
 }
 </script>
 
-<style>
+<style >
+@import './assets/scss/reset.scss';
 </style>
