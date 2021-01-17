@@ -8,7 +8,7 @@ import axios from './http.js'
 import VueAxios from 'vue-axios'
 
 // mockjs 开关
-const mock = true
+const mock = false
 if (mock) {
   require('./mock/api')
 }
