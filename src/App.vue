@@ -19,4 +19,6 @@ export default {
 
 <style >
 @import './assets/scss/reset.scss';
+@import './assets/scss/modal.scss';
+
 </style>

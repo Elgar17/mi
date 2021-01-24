@@ -214,10 +214,11 @@ export default {
             top: 112px;
             left: 0;
             overflow: hidden;
+            box-shadow: none;
+            z-index: 1000;
             background-color: #fff;
             transition: height 0.5s;
             border-top: 1px solid #e5e5e5;
-            box-shadow: none;
             .product {
               float: left;
               width: 16.6%;
