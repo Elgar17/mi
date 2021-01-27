@@ -35,7 +35,7 @@
                     <div>
                       <div class="pro-img">
                         <img
-                          :src="item.mainImage"
+                          v-lazy="item.mainImage"
                           alt=""
                         />
                       </div>
@@ -58,7 +58,7 @@
                   <a href="" target="_blank">
                     <div>
                       <div class="pro-img">
-                        <img src="/imgs/nav-img/nav-3-1.jpg" alt="" />
+                        <img v-lazy="'/imgs/nav-img/nav-3-1.jpg'" alt="" />
                       </div>
                       <div class="pro-name">小米电视</div>
                       <div class="pro-price">6999元</div>

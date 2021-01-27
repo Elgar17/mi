@@ -12,7 +12,7 @@
                   <li v-for="(sub, index) in item" :key="index">
                     <a :href="'/#/product/' + sub.id || sub">
                       <img
-                        :src="sub == 1 ? '/imgs/item-box-1.png' : sub.img"
+                        v-lazy="sub == 1 ? '/imgs/item-box-1.png' : sub.img"
                         alt=""
                       />
                       <span>{{ sub == 1 ? '小米9' : sub.name }}</span>
@@ -47,7 +47,7 @@
         <swiper ref="mySwiper" :options="swiperOptions">
           <swiper-slide v-for="item in slidList" :key="item.id">
             <a :href="'/#/product' + item.id">
-              <img :src="item.img" />
+              <img v-lazy="item.img" />
             </a>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -62,23 +62,23 @@
           v-for="item in adsList"
           :key="item.id"
         >
-          <img :src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
         </a>
       </div>
       <div class="banner">
-        <img src="/imgs/banner-1.png" alt="" />
+        <img v-lazy="'/imgs/banner-1.png'" alt="" />
       </div>
       <div class="product-box">
         <h2>手机</h2>
         <div class="wrapper">
           <div class="banner-left">
-            <img src="/imgs/mix-alpha.jpg" alt="" />
+            <img v-lazy="'/imgs/mix-alpha.jpg'" alt="" />
           </div>
           <div class="list-box">
             <div class="list" v-for="(item, i) in phoneList" :key="i">
               <div class="item" v-for="(li, j) in item" :key="j">
                 <span class="new">新型</span>
-                <img :src="li.mainImage" alt="" />
+                <img v-lazy="li.mainImage" alt="" />
                 <div class="item-info">
                   <h5>{{li.name}}</h5>
                   <p>{{li.subtitle}}</p>
@@ -91,19 +91,32 @@
       </div>
     </div>
     <ServiceBar />
+    <Modal 
+      modeType="m"
+      title="提示"
+      :type="3"
+      :visable="showModal"
+    >
+      <!-- <template v-slot:body> -->
+        <p>商品添加成功！</p>
+      <!-- </template> -->
+    </Modal>
   </div>
 </template>
 
 <script>
 import ServiceBar from '@/components/ServiceBar.vue'
+import Modal from '@/components/Modal.vue'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+// import Modal from '../components/Modal.vue'
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
-    ServiceBar
+    ServiceBar,
+    Modal
   },
   directives: {
     swiper: directive,
@@ -186,7 +199,8 @@ export default {
       phoneList: [
         [1, 1, 1, 1],
         [1, 1, 1, 1]
-      ]
+      ],
+      showModal: true
     }
   },
   computed: {

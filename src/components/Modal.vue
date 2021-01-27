@@ -1,4 +1,3 @@
-// 弹出框
 <template>
   <div class="modal" v-show="visable">
     <div class="mask"></div>
@@ -14,7 +13,7 @@
         <a href="javascript;" v-if="type == 2 ? false : true" class="btn"
           >确定</a
         >
-        <a href="javascript;" v-if="type == 1 ? false : true" class="btn" class="btn">取消</a>
+        <a href="javascript;" v-if="type == 1 ? false : true" class="btn">取消</a>
       </div>
     </div>
   </div>
