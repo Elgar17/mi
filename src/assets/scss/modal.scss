@@ -1,0 +1,44 @@
+.modal{
+    @include position(fixed);
+    z-index: 1000;
+    transition: all .5s;
+    .mask{
+        @include position(fixed);
+        background-color: #000;
+        opacity: .5;
+    }
+    &.slider-enter-active, &.slider-leave-to{
+        top: 0;
+    }
+    &.slider-enter, &.slider-leave-active{
+        top: -100%;
+    }
+    .modal-dialog{
+        @include position(absolute, 40%, 50%, 660px,auto);
+        background-color: #fff;
+        transform: translate(-50%,-50px);
+        .modal-header{
+            height: 60px;
+            line-height: 60px;
+            padding-left:  25px;
+            font-size: 16px;
+            // text-align: center;
+            background-color: #F5F5F5;
+            .icon-close{
+                @include posBgImg(absolute, 25px, 23px, 14px, 14px, '/imgs/icon-close.png', contain);
+                transition: transform .3;
+                &:hover{
+                    transform: scale(1.5)
+                }
+            }
+        }
+        .modal-body{
+            padding: 42px 40px 54px;
+            font-size: 14px;
+        }
+    }
+    .modal-footer{
+        margin: 15px;
+        text-align: center;
+    }
+}

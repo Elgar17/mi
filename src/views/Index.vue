@@ -80,9 +80,9 @@
                 <span class="new">新型</span>
                 <img v-lazy="li.mainImage" alt="" />
                 <div class="item-info">
-                  <h5>{{li.name}}</h5>
-                  <p>{{li.subtitle}}</p>
-                  <p class="price">{{li.price}}元</p>
+                  <h5>{{ li.name }}</h5>
+                  <p>{{ li.subtitle }}</p>
+                  <p class="price" @click="addCart(li.id)">{{ li.price }}元</p>
                 </div>
               </div>
             </div>
@@ -92,14 +92,17 @@
     </div>
     <ServiceBar />
     <Modal 
-      modeType="m"
+      modeType="m" 
       title="提示"
-      :type="3"
+      sureType="确定" 
+      :type="1" 
       :visable="showModal"
+      @submit="submit"
+      @cansle="cansle"
     >
-      <!-- <template v-slot:body> -->
+      <template v-slot:body>
         <p>商品添加成功！</p>
-      <!-- </template> -->
+      </template>
     </Modal>
   </div>
 </template>
@@ -200,7 +203,7 @@ export default {
         [1, 1, 1, 1],
         [1, 1, 1, 1]
       ],
-      showModal: true
+      showModal: false
     }
   },
   computed: {
@@ -209,19 +212,39 @@ export default {
     }
   },
   mounted() {
-    this.swiper.slideTo(3, 500, false);
-    this.init();
+    this.swiper.slideTo(3, 500, false)
+    this.init()
   },
-  methods:{
-    init(){
-      this.axios.get('/api/products',{
-        params:{
-          categoryId: 100012,
-          pageSize: 8
-        }
-      }).then(res=>{
-        this.phoneList = [res.list.slice(0,4),res.list.slice(4,8)]
-      })
+  methods: {
+    init() {
+      this.axios
+        .get('/api/products', {
+          params: {
+            categoryId: 100012,
+            pageSize: 8
+          }
+        })
+        .then((res) => {
+          this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
+        })
+    },
+    addCart() {
+      this.showModal = true;
+      // this.axios
+      //   .post('/api/carts', {
+      //     productId: id,
+      //     selected: true
+      //   })
+      //   .then((res) => {
+      //     this.showModal = true;
+      //   })
+    },
+    submit(){
+      this.showModal = false;
+      console.log('🚀 - submit - submit') 
+    },
+    cansle(){
+      this.showModal = false;
     }
   }
 }
@@ -298,7 +321,6 @@ export default {
                 width: 42px;
                 height: 35px;
                 margin-right: 5px;
-                
               }
             }
           }
@@ -344,49 +366,48 @@ export default {
       @include flex();
       width: 986px;
       margin-bottom: 14px;
-      &:last-child{
+      &:last-child {
         margin-bottom: 0;
       }
-      .item{
+      .item {
         width: 236px;
         height: 302px;
         background-color: $colorG;
         text-align: center;
-        .new{
+        .new {
           background-color: #5bd16f;
           color: #fff;
           padding: 3px 15px;
         }
-        
-          img{
-            width: 221px;
-            height: 152px;
-            margin-top: 15px;
-          }
-        
-        .item-info{
-          h3{
+
+        img {
+          width: 221px;
+          height: 152px;
+          margin-top: 15px;
+        }
+
+        .item-info {
+          h3 {
             font-size: $fontJ;
             color: $colorB;
             line-height: $fontJ;
             font-weight: bold;
           }
-          p{
+          p {
             color: $colorD;
             line-height: 13px;
             margin: 6px auto;
           }
-          .price{
+          .price {
             color: red;
             cursor: pointer;
-            &::after{
+            &::after {
               content: '';
-              @include bgImg(22px,22px,'/imgs/icon-cart-hover.png');
+              @include bgImg(22px, 22px, '/imgs/icon-cart-hover.png');
               margin-left: 5px;
-              vertical-align: middle ;
+              vertical-align: middle;
             }
           }
-          
         }
       }
     }

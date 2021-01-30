@@ -28,7 +28,8 @@ const routes = [{
     path: '/cart',
     name: 'Cart',
     component: () => import('../views/Cart.vue')
-  }, {
+  }, 
+  {
     path: '/order',
     name: 'Order',
     component: () => import('../views/Order.vue'),
@@ -45,6 +46,11 @@ const routes = [{
       name: 'Confirm',
       component: () => import('../views/Confirm.vue')
     }]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Order.vue')
   }
 ]
 
