@@ -85,7 +85,7 @@ export default {
   name: 'NavHeader',
   data() {
     return {
-      username: 'elgar',
+      username: this.$store.state.username,
       phnoeList: []
     }
   },

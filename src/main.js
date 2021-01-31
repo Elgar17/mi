@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 
 
 import axios from './http.js'
@@ -19,6 +20,7 @@ if (mock) {
 }
 
 Vue.use(VueAxios, axios)
+Vue.use(VueCookie)
 
 Vue.config.productionTip = false
 

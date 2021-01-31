@@ -1,5 +1,6 @@
 import axios from 'axios'
 // import env from './env'
+let path = location.hash;
 
 // axios.defaults.baseURL = env.baseURL
 // 超时时间
@@ -10,7 +11,9 @@ axios.interceptors.response.use(function (response) {
   if (res.status == 0) { // 成功 
     return res.data
   } else if (res.status == 10) { // 未登录
-    window.location.href = '/#/login'
+    if(path != '#index'){
+      window.location.href = '/#/login'
+    }
   } else {
     console.log(res.msg);
   }

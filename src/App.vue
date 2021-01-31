@@ -13,6 +13,21 @@ export default {
    }
   },
   mounted() {
+    this.getUser()
+    this.getCartList()
+  },
+  methods: {
+    getUser(){
+      this.axios.get('/api/user').then(res=>{
+        this.$store.dispatch('saveUser', res.username);
+        // to-do add vuex
+      })
+    },
+    getCartList(){
+      this.axios.get('/api/carts/products/sum').then(res=>{
+        this.$store.dispatch('saveCartCount', res);
+      })
+    }
   }
 }
 </script>
