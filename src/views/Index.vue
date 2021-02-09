@@ -10,7 +10,7 @@
               <div class="chiledren">
                 <ul v-for="(item, index) in menuList" :key="index">
                   <li v-for="(sub, index) in item" :key="index">
-                    <a :href="'/#/product/' + sub.id || sub">
+                    <a :href="'/#/product' + sub.id || sub">
                       <img
                         v-lazy="sub == 1 ? '/imgs/item-box-1.png' : sub.img"
                         alt=""

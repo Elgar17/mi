@@ -1,7 +1,7 @@
 <template>
   <div class="nave-bar" :class="{fixed: isFixed }">
     <div class="container">
-      <div class="pro-title">小米10</div>
+      <div class="pro-title">{{ this.name || "小米"}}</div>
       <div class="pro-param">
         <a href="#">概述</a> | <a href="#">参数</a> |
         <a href="#">用户评价</a>
@@ -18,6 +18,9 @@ export default {
     return {
       isFixed: false
     }
+  },
+  props:{
+    name: String
   },
   mounted() {
     window.addEventListener('scroll', this.emitHight)

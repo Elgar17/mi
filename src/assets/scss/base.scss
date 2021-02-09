@@ -11,3 +11,17 @@ a {
         height: 100%;
     }
 }
+
+.fl{
+    float: left;
+}
+
+.fr{
+    float: right;
+}
+
+.clear-fix::after{
+    content: " ";
+    display: block;
+    clear: both;
+}

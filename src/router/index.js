@@ -19,7 +19,7 @@ const routes = [{
       name: 'product',
       component: () => import('../views/Product.vue')
     }, {
-      path: '/dtail/:id',
+      path: '/detail/:id',
       name: 'dtail',
       component: () => import('../views/Dtail.vue')
     }]

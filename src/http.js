@@ -14,6 +14,7 @@ axios.interceptors.response.use(function (response) {
     if(path != '#index'){
       window.location.href = '/#/login'
     }
+    return Promise.reject(res)
   } else {
     console.log(res.msg);
   }
